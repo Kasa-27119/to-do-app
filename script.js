@@ -36,3 +36,28 @@ function addToDo() {
     }
 
 }
+
+// add event listener to the "add button" to add new to do item
+document.getElementById("add-button").addEventListener("click", addToDo);
+
+// event listener to mark to do items as completed
+// on change event on the to do item
+document.getElementById("to-do-list").addEventListener("change", function(event) {
+
+    //check if the event trigger was a checkbox
+    if (event.target.type === "checkbox") {
+
+        // get the parent list item of the checkbox
+        const listItem = event.target.parentNode;
+
+        // check if the checkbox is checked or not
+        if (event.target.checked) {
+
+            //apply a strikethrough style when the checkbox is checked
+            listItem.style.textDecoration = "line-through";
+        } else {
+            // remove the line through when unchecked
+            listItem.style.textDecoration = "none";
+        }
+    }
+})
